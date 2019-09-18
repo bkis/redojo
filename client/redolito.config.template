@@ -1,0 +1,19 @@
+
+#    #######################
+#    #### redolito      ####
+#    #### client config ####
+#    #######################
+
+
+# local target directory for saving downloaded files
+# (must be writable for the user running the script!)
+target_dir="/path/to/download/directory"
+
+# url of server directory (where you put the index.php)
+server_dir="https://www.your-server.org/redolito"
+
+# HTTP username for server (empty if not needed)
+http_user=
+
+# HTTP password for server (empty if not needed)
+http_pw=
