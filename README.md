@@ -1,2 +1,2 @@
 # redolito
-Remote Download List Tool - simple remote management for download jobs
+**re**mote **do**wnload **li**st **to**ol - a simple but effective remote management tool for download jobs
