@@ -4,7 +4,7 @@
 	// redolito       //
 	// server script  //
 	////////////////////
-	
+
 	// FOR DEVELOPMENT: UN-COMMENT TO PRINT ERRORS AND WARNINGS
 	//ini_set('display_errors', 1);
 	//ini_set('display_startup_errors', 1);
@@ -77,6 +77,7 @@
 
 			<h1>redolito</h1>
 
+			<!-- SECTION: NEW DOWNLOAD JOB -->
             <div class="form-container">
                 <div class="section-heading">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA4ElEQVRIx91VOwoCMRScfAoLEewE8QLewPt5CbHaygtYWNh7A4/gBUSwyJtssytLSDDsZll0IEVCMvNmHkmAseGcm5M8knySfJGsRGRRTIBkRdIH41SKX5EUADrU1VqbEgI6Qo7EWm8HvhRZysGosEllrdUQ4jaZ6RyEleQidP5VIDxE0qfiixUzekTT9yA3iqICqZ78Zw+6AheSGxFZAtjnxBObh/g8diTX1tpHuKHvRWvPWQBvADMAzKm4T0TXhujgnFsNIYtGJCJbpdQNQLl/uOvAGHP33u8AnJu4fgs1eRF44L1j0OoAAAAASUVORK5CYII=" alt=""/>
@@ -106,6 +107,7 @@
                 </form>
             </div>
 
+			<!-- SECTION: EXISTING DOWNLOAD JOBS -->
             <div class="form-container">
                     <div class="section-heading">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABp0lEQVRIx9WSsUtbURTGjzcSQhAHKSWIg5N0U5ykg0PHdBcJ/g1SxMl/wKE4ODk4OImDiJRCIZSSIXTs4BSCEAUppYqI7ZR3z/k9lxsIiXkvMQTJgcvjvffd7zvfOZ/IuNdEv0Ag7vzmnEu9717b4dCVaLHXWAYZlwN+AzFQHZkN730WuDGzlZGJAFvAGfAhOBrmnHYJqOo0cG9mC8CvIcj/mNmbFu9Eh4tdEZkRkYqInLxwGB+dc9+e/WNmBeDBzGaBqxd0f9jJ2RWtALoVkb8isj9A59dxHC9mMpl/iSgzewfcqWqhLcJpx4DVQRJ1Dmya2TywC/wEmgkCnwfakpm9B/63CS1FUZQHVoEdoAw8BvLvqpoD1oFacFMDSmkuYqAEHAJ14B74Anwys+Vms5lV1beNRsMF8ueclRIF2t9VdQ64CN3VgAfgK7ANXAbCClAMzxio9yUQRdEkcARUzWw6CBaANeCgreNiuFtsLT9VwHs/CRwDFVWd6oGtdTj40Y8D894XgFOgrKr5BGypxw42kgT2AA+cqGouLXlBpB5SVE8kH6t6AuEu1/s8ZvxZAAAAAElFTkSuQmCC" alt=""/>
