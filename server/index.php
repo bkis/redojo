@@ -134,7 +134,7 @@
                     <select name="job" size="5">
 						<?php 
 							foreach ($jobs as $id => $job) {
-								echo '<option value="' . $id . '">' . $job['dl_name'] . ' [' . $job['dl_url'] . ']</option>';
+								echo '<option value="' . $id . '">' . $job['dl_name'] . ' (' . $job['dl_url'] . ')</option>';
 							}
 						?>
                     </select>
