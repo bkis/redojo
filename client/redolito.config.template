@@ -12,6 +12,9 @@ target_dir="/path/to/download/directory"
 # url of server directory (where you put the index.php)
 server_dir="https://www.your-server.org/redolito"
 
+# limit for no. of times to retry downloads
+retries_limit=3
+
 # HTTP username for server (empty if not needed)
 http_user=
 
