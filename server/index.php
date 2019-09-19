@@ -61,7 +61,7 @@
 	// update jobs list file
 	$toWrite = '';
 	foreach ($jobs as $id => $job) {
-		$toWrite = $toWrite . $id . '\n';
+		$toWrite = $toWrite . $id . "\n";
 	}
 	file_put_contents($jobs_dir . '/' . $jobs_list, $toWrite);
 
