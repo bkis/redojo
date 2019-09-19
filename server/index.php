@@ -1,9 +1,14 @@
 <?php
 
-	//TEMP DEV
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
+	////////////////////
+	// redolito       //
+	// server script  //
+	////////////////////
+	
+	// FOR DEVELOPMENT: UN-COMMENT TO PRINT ERRORS AND WARNINGS
+	//ini_set('display_errors', 1);
+	//ini_set('display_startup_errors', 1);
+	//error_reporting(E_ALL);
 	
 	// load config data
 	$jobs_dir = 'jobs';
@@ -55,8 +60,6 @@
 	file_put_contents($jobs_dir . '/' . $jobs_list, $toWrite);
 
 ?>
-
-
 
 
 <!DOCTYPE html>

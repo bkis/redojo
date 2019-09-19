@@ -39,6 +39,7 @@ mkdir -p "$temp_dir" || echo "[ERROR] Could not create temporary directory: $tem
 # create target directory
 mkdir -p "$target_dir" || echo "[ERROR] Could not create missing target directory: $target_dir"
 
+
 #    #######################
 #    # start download jobs #
 #    #######################
