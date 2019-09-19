@@ -139,3 +139,40 @@ button > img {
     width: 16px;
     height: 16px;
 }
+
+#status {
+    position: fixed;
+    top: 10px;
+    color: #fff;
+    padding: 4px;
+    border-radius: var(--common-border-radius);
+    font-size: 110%;
+    visibility: visible;
+    animation: 4s fadeOut;
+    animation-fill-mode: forwards;
+
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(134, 134, 134, 0.7);
+    -moz-box-shadow: 0px 2px 8px 0px rgba(134, 134, 134, 0.7);
+    box-shadow: 0px 2px 8px 0px rgba(134, 134, 134, 0.7);
+}
+
+.status-successful {
+    background-color: #0e9149 !important;
+}
+
+.status-error {
+    background-color: #b93838 !important;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}

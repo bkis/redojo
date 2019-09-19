@@ -35,19 +35,25 @@
 		$url = htmlspecialchars_decode($_POST['url']);
 		$title = preg_replace('/[^A-Za-z0-9.\-_() ]/', '', $_POST['title']) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 		$filename = hash('md2', $url);
-		//add to jobs
-		$jobs[$filename]['dl_name'] = $title;
-		$jobs[$filename]['dl_url'] = $url;
 		//write job file
-		file_put_contents($jobs_dir . '/' . $filename, ('dl_name="' . $title . '"\ndl_url="' . $url . '"'));
+		$status = file_put_contents(
+			$jobs_dir . '/' . $filename,
+			('dl_name="' . $title . '"' . "\n" . 'dl_url="' . $url . '"')
+		) !== false;
+		//add to jobs
+		if ($status){
+			$jobs[$filename]['dl_name'] = $title;
+			$jobs[$filename]['dl_url'] = $url;
+		}
 	}
 
 	// delete job
 	if (isset($_POST['action'])
 			&& strcmp($_POST['action'], 'delete') === 0
 			&& isset($_POST['job'])){
+		$status = false;
 		//delete job file
-		unlink($jobs_dir . '/' . $_POST['job']);
+		$status = unlink($jobs_dir . '/' . $_POST['job']);
 		//remove from jobs list
 		unset($jobs[$_POST['job']]);
 	}
@@ -68,12 +74,23 @@
 	<head>
 		<title>redolito</title>
 		<meta charset="utf-8">
+		<meta name="robots" content="noindex,nofollow">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
 	<body>
 
 		<div id="container">
+
+			<!-- OPERATION STATUS MESSAGE -->
+			<?php if (isset($status)){ ?>
+			<div id="status" class="<?php echo $status ? 'status-successful' : 'status-error' ?>">
+				<?php
+					echo $status ? (json_decode('"\u263A"') . " Operation successful") : (json_decode('"\u2639"') . "Error");
+				?>
+			</div>
+			<?php } ?>
 
 			<h1>redolito</h1>
 
