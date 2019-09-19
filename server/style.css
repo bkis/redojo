@@ -1,0 +1,141 @@
+
+/* ==== CUSTOM PROPERTIES ==== */
+
+:root {
+    --main-color: #3c71aa;
+    --font-color-dark: #656565;
+    --font-color-light: #fff;
+    --common-border-radius: 3px;
+    --common-border-width: 4px;
+}
+
+
+/* ==== FONTS ==== */
+
+@font-face {
+    font-family: 'ABeeZee';
+    src: url('fonts/ABeeZee-Regular.ttf') format('truetype');
+}
+
+
+/* ==== AND THE REST ... ==== */
+
+body {
+    font-size: 16px;
+    font-family: 'ABeeZee', sans-serif;
+    color: var(--font-color-dark);
+}
+
+#container {
+    margin: 0 auto;
+    width: 512px;
+    max-width: 100%;
+    text-align: center;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: bolder;
+    text-align: right;
+    color: var(--main-color);
+    font-size: 22px;
+    margin: 0;
+    margin-top: 1rem;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 1rem;
+    padding: 10px;
+    padding-bottom: 12px;
+    background-color: var(--main-color);
+    color: var(--font-color-light);
+    font-weight: normal;
+    font-size: 120%;
+}
+
+.section-heading > img {
+    margin-right: .8rem;
+}
+
+.form-right {
+    text-align: right;
+}
+
+form {
+    text-align: left;
+}
+
+.form-container {
+    padding: 0;
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    border: var(--common-border-width) solid var(--main-color);
+    border-radius: var(--common-border-radius);
+    
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(134, 134, 134, 0.7);
+    -moz-box-shadow: 0px 2px 8px 0px rgba(134, 134, 134, 0.7);
+    box-shadow: 0px 2px 8px 0px rgba(134, 134, 134, 0.7);
+}
+
+form {  
+    padding: 0 1rem .5rem 1rem;
+    border: none;
+}
+
+label {
+    display: block;
+    padding-left: 4px;
+    margin-top: 4px;
+    margin-bottom: -4px;
+}
+
+form select {
+    width: 100%;
+    margin: .5rem 0;
+}
+
+select > option {
+    padding: 6px;
+    color: var(--font-color-dark);
+}
+
+form input, form select {
+    font-family: 'ABeeZee', sans-serif;
+    border: 1px solid #bbb;
+    border-radius: var(--common-border-radius);
+}
+
+form input[type="text"] {
+    padding: 10px 8px;
+    width: calc(100% - 16px);
+    margin: .5rem 0;
+}
+
+form button[type="submit"] {
+    margin: 10px 0;
+    padding: 6px 12px;
+    color: var(--font-color-light);
+    border: 1px solid var(--main-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    font-size: 110%;
+    border-radius: var(--common-border-radius);
+    transition: .2s;
+}
+
+form button[type="submit"]:hover {
+    filter: brightness(1.2);
+}
+
+button > img {
+    position: relative;
+    top: 1px;
+    width: 16px;
+    height: 16px;
+}
