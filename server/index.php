@@ -6,12 +6,12 @@
 	error_reporting(E_ALL);
 	
 	// load config data
-	$jobs_dir = "jobs";
-	$jobs_list = "redolito.jobs";
+	$jobs_dir = 'jobs';
+	$jobs_list = 'redolito.jobs';
 
 	// check if jobs directory exists
 	if(!is_dir($jobs_dir) && !mkdir($jobs_dir)){
-		echo "ERROR: Could not create missing jobs directory: " . $jobs_dir;
+		echo 'ERROR: Could not create missing jobs directory: ' . $jobs_dir;
 		die();
 	}
 	
@@ -19,40 +19,40 @@
 	$job_files = array_diff(scandir($jobs_dir), array($jobs_list, '..', '.'));
 	$jobs = array();
 	foreach ($job_files as $job_file){
-		$jobs[$job_file] = parse_ini_file($jobs_dir . "/" . $job_file);
+		$jobs[$job_file] = parse_ini_file($jobs_dir . '/' . $job_file);
 	}
 
 	// save new job
-	if (isset($_POST["action"])
-			&& strcmp($_POST["action"], "save") === 0
-			&& isset($_POST["title"])
-			&& isset($_POST["url"])){
-		$url = htmlspecialchars_decode($_POST["url"]);
-		$title = preg_replace("/[^A-Za-z0-9.\-_() ]/", "", $_POST["title"]) . "." . pathinfo($url, PATHINFO_EXTENSION);
+	if (isset($_POST['action'])
+			&& strcmp($_POST['action'], 'save') === 0
+			&& isset($_POST['title'])
+			&& isset($_POST['url'])){
+		$url = htmlspecialchars_decode($_POST['url']);
+		$title = preg_replace('/[^A-Za-z0-9.\-_() ]/', '', $_POST['title']) . '.' . pathinfo($url, PATHINFO_EXTENSION);
 		$filename = hash('md2', $url);
 		//add to jobs
-		$jobs[$filename]["dl_name"] = $title;
-		$jobs[$filename]["dl_url"] = $url;
+		$jobs[$filename]['dl_name'] = $title;
+		$jobs[$filename]['dl_url'] = $url;
 		//write job file
-		file_put_contents($jobs_dir . "/" . $filename, ("dl_name=\"" . $title . "\"\ndl_url=\"" . $url . "\""));
+		file_put_contents($jobs_dir . '/' . $filename, ('dl_name="' . $title . '"\ndl_url="' . $url . '"'));
 	}
 
 	// delete job
-	if (isset($_POST["action"])
-			&& strcmp($_POST["action"], "delete") === 0
-			&& isset($_POST["job"])){
+	if (isset($_POST['action'])
+			&& strcmp($_POST['action'], 'delete') === 0
+			&& isset($_POST['job'])){
 		//delete job file
-		unlink($jobs_dir . "/" . $_POST["job"]);
+		unlink($jobs_dir . '/' . $_POST['job']);
 		//remove from jobs list
-		unset($jobs[$_POST["job"]]);
+		unset($jobs[$_POST['job']]);
 	}
 
 	// update jobs list file
-	$toWrite = "";
+	$toWrite = '';
 	foreach ($jobs as $id => $job) {
-		$toWrite = $toWrite . $id . "\n";
+		$toWrite = $toWrite . $id . '\n';
 	}
-	file_put_contents($jobs_dir . "/" . $jobs_list, $toWrite);
+	file_put_contents($jobs_dir . '/' . $jobs_list, $toWrite);
 
 ?>
 
@@ -112,7 +112,7 @@
                     <select name="job" size="5">
 						<?php 
 							foreach ($jobs as $id => $job) {
-								echo "<option value=\"" . $id . "\">" . $job['dl_name'] . " [" . $job['dl_url'] . "]</option>";
+								echo '<option value="' . $id . '">' . $job['dl_name'] . ' [' . $job['dl_url'] . ']</option>';
 							}
 						?>
                     </select>
