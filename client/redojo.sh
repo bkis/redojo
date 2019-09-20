@@ -54,7 +54,7 @@ f_download () {
         ${retries_limit:+--tries=$retries_limit} \
         ${3:+${http_user:+--http-user=$http_user}} \
         ${3:+${http_pw:+--http-password=$http_pw}} \
-        ${wget_verbose:+--quiet} \
+        ${wget_quiet:+--quiet} \
         -O "$1" \
         "$2"
 }
@@ -72,7 +72,7 @@ f_download "$list_file" "$server_jobs_list" "auth"
 [ ! -f "$list_file" ] && echo "[ERROR] Jobs list could not be downloaded :(" && exit
 
 # process downloads list
-echo "Running download jobs ..."
+echo "Running download jobs ($(wc -l < "$list_file")) ..."
 while IFS= read -r line; do
 
     # skip line if it's too short

@@ -22,6 +22,6 @@ http_user=
 http_pw=
 
 ### Tell WGET to show less output
-### Set this to anything (un-comment) to turn verbose output on
-### or comment this out to turn it off!
-# wget_verbose=true
+### Set this to anything to hide verbose WGET output
+### or comment this out to show verbose output!
+wget_quiet=true
