@@ -2,7 +2,7 @@
 /* ==== CUSTOM PROPERTIES ==== */
 
 :root {
-    --main-color: #3c71aa;
+    --main-color: #2f456e;
     --font-color-dark: #656565;
     --font-color-light: #fff;
     --common-border-radius: 3px;
@@ -28,7 +28,7 @@ body {
 
 #container {
     margin: 0 auto;
-    width: 512px;
+    width: 768px;
     max-width: 100%;
     text-align: center;
     padding: 0;

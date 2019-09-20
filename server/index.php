@@ -131,10 +131,10 @@
                         Existing download jobs
                     </div>
                 <form action="index.php" method="post">
-                    <select name="job" size="5">
+                    <select name="job" size="5" required>
 						<?php 
 							foreach ($jobs as $id => $job) {
-								echo '<option value="' . $id . '">' . $job['dl_name'] . ' (' . $job['dl_url'] . ')</option>';
+								echo '<option value="' . $id . '" title="' . $job['dl_url'] . '">' . $job['dl_name'] . ' (' . $job['dl_url'] . ')</option>';
 							}
 						?>
                     </select>
