@@ -1,2 +1,2 @@
 # redojo
-**re**mote **do**wnload **li**st **to**ol - a simple but effective remote management tool for download jobs
+**RE**mote **DO**wnload **JO**bs - a simple tool for creating download jobs on a server to be processed by a client
