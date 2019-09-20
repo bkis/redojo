@@ -39,6 +39,26 @@ mkdir -p "$temp_dir" || echo "[ERROR] Could not create temporary directory: $tem
 # create target directory
 mkdir -p "$target_dir" || echo "[ERROR] Could not create missing target directory: $target_dir"
 
+# download function to call WGET from:
+# params:
+#   1: target file (local)
+#   2: remote file (the one to download)
+#   3: use http auth credentials from config, if any
+#      (leave unset for no http auth, set to anything to use config credentials!)
+f_download () {
+    wget \
+        --retry-connrefused \
+        --waitretry=1 \
+        --read-timeout=20 \
+        --timeout=15 \
+        ${retries_limit:+--tries=$retries_limit} \
+        ${3:+${http_user:+--http-user=$http_user}} \
+        ${3:+${http_pw:+--http-password=$http_pw}} \
+        ${wget_verbose:+--quiet} \
+        -O "$1" \
+        "$2"
+}
+
 
 #    #######################
 #    # start download jobs #
@@ -46,17 +66,7 @@ mkdir -p "$target_dir" || echo "[ERROR] Could not create missing target director
 
 # download list of planned downloads from server
 echo "Fetching jobs list from server: $server_jobs_list"
-wget \
-    --retry-connrefused \
-    --waitretry=1 \
-    --read-timeout=20 \
-    --timeout=15 \
-    ${retries_limit:+--tries=$retries_limit} \
-    ${http_user:+--http-user=$http_user} \
-    ${http_pw:+--http-password=$http_pw} \
-    ${wget_verbose:+--quiet} \
-    -O "$list_file" \
-    "$server_jobs_list"
+f_download "$list_file" "$server_jobs_list" "auth"
 
 # ...and check if it's there...
 [ ! -f "$list_file" ] && echo "[ERROR] Jobs list could not be downloaded :(" && exit
@@ -64,29 +74,23 @@ wget \
 # process downloads list
 echo "Running download jobs ..."
 while IFS= read -r line; do
+
     # skip line if it's too short
     [ ${#line} -gt 5 ] || continue
+
     # download ghost file
     job_file="$temp_dir/$line"
-    wget \
-        --retry-connrefused \
-        --waitretry=1 \
-        --read-timeout=20 \
-        --timeout=15 \
-        ${retries_limit:+--tries=$retries_limit} \
-        ${http_user:+--http-user=$http_user} \
-        ${http_pw:+--http-password=$http_pw} \
-        ${wget_verbose:+--quiet} \
-        -O "$job_file" \
-        "$server_dir/jobs/$line"
+    f_download "$job_file" "$server_dir/jobs/$line" "auth"
 
     # ...and check if it's there...
     [ ! -f "$job_file" ] && echo "    --> Job file '$job_file' could not be downloaded :(" && continue
+
     # load ghost file data
     source "$job_file"
+
     # prepare dl job vars
-    # dl_name=    <-- is loaded from ghost file
-    # dl_url=    <-- is loaded from ghost file
+    # dl_name=   <-- sourced from ghost file
+    # dl_url=    <-- sourced from ghost file
     dl_targetfile="$target_dir/$dl_name"
 
     if [ -f "$dl_targetfile" ]
@@ -95,15 +99,7 @@ while IFS= read -r line; do
         continue
     else
 	    echo "    --> Downloading: \"$dl_name\" (from: ${dl_url:0:24}...)"
-        wget \
-            --retry-connrefused \
-            --waitretry=1 \
-            --read-timeout=20 \
-            --timeout=15 \
-            ${retries_limit:+--tries=$retries_limit} \
-            ${wget_verbose:+--quiet} \
-            -O "$dl_targetfile" \
-            "$dl_url" \
+        f_download "$dl_targetfile" "$dl_url"
     fi
 done < "$list_file"
 
