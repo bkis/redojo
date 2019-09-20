@@ -72,18 +72,19 @@ f_download "$list_file" "$server_jobs_list" "auth"
 [ ! -f "$list_file" ] && echo "[ERROR] Jobs list could not be downloaded :(" && exit
 
 # process downloads list
-echo "Running download jobs ($(wc -l < "$list_file")) ..."
+jobs_count=$(wc -l < "$list_file") # total number of jobs
+jobs_current=0 # jobs counter
+echo "Running download jobs ($jobs_count) ..."
 while IFS= read -r line; do
-
-    # skip line if it's too short
-    [ ${#line} -gt 5 ] || continue
+    jobs_current=$(($jobs_current + 1)) # increment jobs counter
+    [ ${#line} -gt 5 ] || continue # skip line if it's too short
 
     # download ghost file
     job_file="$temp_dir/$line"
     f_download "$job_file" "$server_dir/jobs/$line" "auth"
 
     # ...and check if it's there...
-    [ ! -f "$job_file" ] && echo "    --> Job file '$job_file' could not be downloaded :(" && continue
+    [ ! -f "$job_file" ] && echo -e "  $jobs_current / $jobs_count\t [Error]    \t Job file '$job_file' could not be downloaded :(" && continue
 
     # load ghost file data
     source "$job_file"
@@ -95,10 +96,10 @@ while IFS= read -r line; do
 
     if [ -f "$dl_targetfile" ]
     then
-	    echo "    --> Skipping: \"$dl_name\" (already exists!)"
+	    echo -e "  $jobs_current / $jobs_count\t [Skip]     \"$dl_name\" (already exists!)"
         continue
     else
-	    echo "    --> Downloading: \"$dl_name\" (from: ${dl_url:0:24}...)"
+	    echo -e "  $jobs_current / $jobs_count\t [Download] \"$dl_name\" (from: ${dl_url:0:24}...)"
         f_download "$dl_targetfile" "$dl_url"
     fi
 done < "$list_file"
