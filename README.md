@@ -1,5 +1,6 @@
 
-# redojo - **RE**mote **DO**wnload **JO**bs
+# redojo
+**RE**mote **DO**wnload **JO**bs
 
 
 ## What problem does this tool solve?
@@ -16,9 +17,9 @@ Maybe there are people having the same problem as I did, maybe there's even a di
 ## Requirements
 
 - A web server that understands **PHP** (to serve the web UI)
-- Anything that can run a bash script (that's where the downloads go!)
+- Anything that can run a **bash script** (that's where the downloads go!)
 
-That's it, really.
+*That's it, really.*
 
 
 ## Installation and Configuration
