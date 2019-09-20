@@ -92,20 +92,23 @@
 			</div>
 			<?php } ?>
 
-			<h1>redojo</h1>
+			<h1>
+				<svg class="svg-icon" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M17.012 18.708l-4.318-1.07-3.981 3.871c-.326.317-.755.491-1.209.491-.85 0-1.504-.691-1.504-1.502v-4.519l-4.13-8.979h-1.37c-.311 0-.5-.26-.5-.5 0-.239.189-.5.5-.5h2.025l4.194 9.132 10.38 2.569c.363-1.544 1.75-2.695 3.404-2.695 1.93 0 3.497 1.567 3.497 3.497s-1.567 3.497-3.497 3.497c-1.861 0-3.385-1.457-3.491-3.292zm-10.012-2.481v4.271c0 .48.612.688 1.017.294l3.534-3.437-4.551-1.128zm13.503 1.026c.69 0 1.25.56 1.25 1.25s-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25.56-1.25 1.25-1.25zm1.497-9.25l-17.483-.003 2.454 5.367c.256.561.756.972 1.356 1.114l6.593 1.571c.805.192 1.644-.132 2.112-.814l4.968-7.235zm-10-1.003h-5v-2h5v2zm6 0h-5v-2h5v2zm-3-3h-5v-2h5v2z"/></svg>
+				redojo
+			</h1>
 
 			<!-- SECTION: NEW DOWNLOAD JOB -->
             <div class="form-container">
                 <div class="section-heading">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA4ElEQVRIx91VOwoCMRScfAoLEewE8QLewPt5CbHaygtYWNh7A4/gBUSwyJtssytLSDDsZll0IEVCMvNmHkmAseGcm5M8knySfJGsRGRRTIBkRdIH41SKX5EUADrU1VqbEgI6Qo7EWm8HvhRZysGosEllrdUQ4jaZ6RyEleQidP5VIDxE0qfiixUzekTT9yA3iqICqZ78Zw+6AheSGxFZAtjnxBObh/g8diTX1tpHuKHvRWvPWQBvADMAzKm4T0TXhujgnFsNIYtGJCJbpdQNQLl/uOvAGHP33u8AnJu4fgs1eRF44L1j0OoAAAAASUVORK5CYII=" alt=""/>
+					<svg class="svg-icon svg-icon-light" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4.999 19v2h-4.999v-2h4.999zm2 2l5.827-1.319-4.403-4.4-1.424 5.719zm17.001-12.466l-9.689 9.804-4.537-4.536 9.69-9.802 4.536 4.534zm-4.48-1.65l-6.916 6.917.707.707 6.916-6.917-.707-.707z"/></svg>
                     New download job
                 </div>
                 <form action="index.php" method="post">
-                    <label>Title (will be used as file name)</label>
+                    <label>Title</label>
                     <input
                         type="text"
                         name="title"
-                        placeholder="Give this file a descriptive name!"
+                        placeholder="This will be used as file name (extension will be set automatically)"
                         title="All characters but A-Z, a-z, 0-9, .-_() will be stripped! 64 characters max!"
                         maxlength="64" />
                     <br>
@@ -118,7 +121,7 @@
                         maxlength="512" />
                     <div class="form-right">
                         <button type="submit" name="action" value="save" title="Save this download job to the list!">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABNklEQVRIx+3SIUgEQRTG8WM5jgsXLhjFIAaD4RCD4YJBxGAwGAwGg8FgMBkMNqPRZDSZROQwGExGo8EgBjGIiCyG5Xbe+69lB5ZzZ27PXdt98NrM75thplYbJxNgCeipaus/8C7wDSTAXaUlwCIQpnhSaQmwAHwN4HZuyuId4NOBR8ByGXwO+HDgfWD11yZVnTfGNIbhqjoLvHvwtbwTraTXuhKRpgefAd4cuAHWfbhdeCsirRx8Gnj14Bt5JxrE7dyrajuzbgp4ceAKbLoe69qxKQEeVHVCVSeBZw++5XwwEWkCPU/JI/DkwbeHfrm05NJT4pqdwv9aRBrAxQj4bmE8U1IHzgvgeyPjNsaYOnDmwff/jNvEcRwApzn4QWncJoqiADjJ4IeV4TZhGAbAMXBUOT6OzQ+8k9qof8W2WgAAAABJRU5ErkJggg==" alt="save"/>
+							save
                         </button>
                     </div>
                 </form>
@@ -127,7 +130,7 @@
 			<!-- SECTION: EXISTING DOWNLOAD JOBS -->
             <div class="form-container">
                     <div class="section-heading">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABp0lEQVRIx9WSsUtbURTGjzcSQhAHKSWIg5N0U5ykg0PHdBcJ/g1SxMl/wKE4ODk4OImDiJRCIZSSIXTs4BSCEAUppYqI7ZR3z/k9lxsIiXkvMQTJgcvjvffd7zvfOZ/IuNdEv0Ag7vzmnEu9717b4dCVaLHXWAYZlwN+AzFQHZkN730WuDGzlZGJAFvAGfAhOBrmnHYJqOo0cG9mC8CvIcj/mNmbFu9Eh4tdEZkRkYqInLxwGB+dc9+e/WNmBeDBzGaBqxd0f9jJ2RWtALoVkb8isj9A59dxHC9mMpl/iSgzewfcqWqhLcJpx4DVQRJ1Dmya2TywC/wEmgkCnwfakpm9B/63CS1FUZQHVoEdoAw8BvLvqpoD1oFacFMDSmkuYqAEHAJ14B74Anwys+Vms5lV1beNRsMF8ueclRIF2t9VdQ64CN3VgAfgK7ANXAbCClAMzxio9yUQRdEkcARUzWw6CBaANeCgreNiuFtsLT9VwHs/CRwDFVWd6oGtdTj40Y8D894XgFOgrKr5BGypxw42kgT2AA+cqGouLXlBpB5SVE8kH6t6AuEu1/s8ZvxZAAAAAElFTkSuQmCC" alt=""/>
+						<svg class="svg-icon svg-icon-light" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M13.403 24h-13.403v-22h3c1.231 0 2.181-1.084 3-2h8c.821.916 1.772 2 3 2h3v9.15c-.485-.098-.987-.15-1.5-.15l-.5.016v-7.016h-4l-2 2h-3.897l-2.103-2h-4v18h9.866c.397.751.919 1.427 1.537 2zm5.097-11c3.035 0 5.5 2.464 5.5 5.5s-2.465 5.5-5.5 5.5c-3.036 0-5.5-2.464-5.5-5.5s2.464-5.5 5.5-5.5zm0 2c1.931 0 3.5 1.568 3.5 3.5s-1.569 3.5-3.5 3.5c-1.932 0-3.5-1.568-3.5-3.5s1.568-3.5 3.5-3.5zm2.5 4h-3v-3h1v2h2v1zm-15.151-4.052l-1.049-.984-.8.823 1.864 1.776 3.136-3.192-.815-.808-2.336 2.385zm6.151 1.052h-2v-1h2v1zm2-2h-4v-1h4v1zm-8.151-4.025l-1.049-.983-.8.823 1.864 1.776 3.136-3.192-.815-.808-2.336 2.384zm8.151 1.025h-4v-1h4v1zm0-2h-4v-1h4v1zm-5-6c0 .552.449 1 1 1 .553 0 1-.448 1-1s-.447-1-1-1c-.551 0-1 .448-1 1z"/></svg>
                         Existing download jobs
                     </div>
                 <form action="index.php" method="post">
@@ -140,7 +143,7 @@
                     </select>
                     <div class="form-right">
                         <button type="submit" name="action" value="delete" title="Delete the selected download job!">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAkklEQVRIx+2V0Q2AMAhEER1KJ3IaN3UFDn9ao6ilRk2N8ZL+QODRI2mJHAEYAAgANUcADF59lQEQIuKjNDPXqfrGA8TmzLwaBoAmwNsbhILbFAdyJ3i99ny9rOW+HreoPEBVO1XtcuNW7g6inzZ3FF/m3mHRD/gB5QHuhyMi7Zm41fde0/GGnqseFtBfhIyhx6wJbMRXxHGKRJQAAAAASUVORK5CYII=" alt="delete"/>
+							delete
                         </button>
                     </div>
                 </form>
