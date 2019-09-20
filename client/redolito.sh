@@ -1,17 +1,17 @@
 #!/bin/bash
 
 #    #######################
-#    #### redolito      ####
+#    #### redojo      ####
 #    #### client script ####
 #    #######################
 
-echo "[ redolito ]"
+echo "[ redojo ]"
 
 # define variables
-config_file="redolito.config"
-lock_file="redolito.lock"
+config_file="redojo.config"
+lock_file="redojo.lock"
 temp_dir="temp"
-list_file="redolito.list"
+list_file="redojo.list"
 
 # get script directory
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -31,7 +31,7 @@ touch "$lock_file"
 
 # get config variables
 source "$config_file"
-server_jobs_list="$server_dir/jobs/redolito.jobs"
+server_jobs_list="$server_dir/jobs/redojo.jobs"
 
 # create temporary directory
 mkdir -p "$temp_dir" || echo "[ERROR] Could not create temporary directory: $temp_dir"

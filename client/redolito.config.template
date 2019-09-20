@@ -1,6 +1,6 @@
 
 #    #######################
-#    #### redolito      ####
+#    #### redojo      ####
 #    #### client config ####
 #    #######################
 
@@ -10,7 +10,7 @@
 target_dir="/path/to/download/directory"
 
 ### url of server directory (where you put the index.php)
-server_dir="https://www.your-server.org/redolito"
+server_dir="https://www.your-server.org/redojo"
 
 ### limit for no. of times to retry downloads
 retries_limit=3

@@ -1,7 +1,7 @@
 <?php
 
 	////////////////////
-	// redolito       //
+	// redojo       //
 	// server script  //
 	////////////////////
 
@@ -12,7 +12,7 @@
 	
 	// load config data
 	$jobs_dir = 'jobs';
-	$jobs_list = 'redolito.jobs';
+	$jobs_list = 'redojo.jobs';
 
 	// check if jobs directory exists
 	if(!is_dir($jobs_dir) && !mkdir($jobs_dir)){
@@ -72,7 +72,7 @@
 <html>
 
 	<head>
-		<title>redolito</title>
+		<title>redojo</title>
 		<meta charset="utf-8">
 		<meta name="robots" content="noindex,nofollow">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -92,7 +92,7 @@
 			</div>
 			<?php } ?>
 
-			<h1>redolito</h1>
+			<h1>redojo</h1>
 
 			<!-- SECTION: NEW DOWNLOAD JOB -->
             <div class="form-container">
