@@ -26,7 +26,7 @@ Maybe there are people having the same problem as I did, maybe there's even a di
 
 1. Copy the contents of the `server` folder to your web server
 2. Copy the contents of the `client` folder to the target system that's supposed to download the files
-3. Edit the `redojo.config.template` to your needs and rename it to `redojo.config`
+3. Edit the `redojo.config.template` adding the path to your target download directory and your server's URL etc. and **rename it** to `redojo.config`
 4. Set up a cron job to run the `redojo.sh` script periodically (*optional - you could also run it manually, if you liked*)
 
 **Tipp:** Look into the server script's `CSS` file! You can change some properties like the main color etc.
