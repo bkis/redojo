@@ -5,18 +5,23 @@
 #    #######################
 
 
-# local target directory for saving downloaded files
-# (must be writable for the user running the script!)
+### local target directory for saving downloaded files
+### (must be writable for the user running the script!)
 target_dir="/path/to/download/directory"
 
-# url of server directory (where you put the index.php)
+### url of server directory (where you put the index.php)
 server_dir="https://www.your-server.org/redolito"
 
-# limit for no. of times to retry downloads
+### limit for no. of times to retry downloads
 retries_limit=3
 
-# HTTP username for server (empty if not needed)
+### HTTP username for YOUR server (empty if not needed)
 http_user=
 
-# HTTP password for server (empty if not needed)
+### HTTP password for YOUR server (empty if not needed)
 http_pw=
+
+### Tell WGET to show less output
+### Set this to anything (un-comment) to turn verbose output on
+### or comment this out to turn it off!
+# wget_verbose=true

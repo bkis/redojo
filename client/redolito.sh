@@ -47,9 +47,16 @@ mkdir -p "$target_dir" || echo "[ERROR] Could not create missing target director
 # download list of planned downloads from server
 echo "Fetching jobs list from server: $server_jobs_list"
 wget \
-    --retry-connrefused --waitretry=1 --read-timeout=20 \
-    --timeout=15 ${retries_limit:+--tries=$retries_limit} -O "$list_file" \
-    ${http_user:+--http-user=$http_user} ${http_pw:+--http-password=$http_pw} "$server_jobs_list" -q
+    --retry-connrefused \
+    --waitretry=1 \
+    --read-timeout=20 \
+    --timeout=15 \
+    ${retries_limit:+--tries=$retries_limit} \
+    ${http_user:+--http-user=$http_user} \
+    ${http_pw:+--http-password=$http_pw} \
+    ${wget_verbose:+--quiet} \
+    -O "$list_file" \
+    "$server_jobs_list"
 
 # ...and check if it's there...
 [ ! -f "$list_file" ] && echo "[ERROR] Jobs list could not be downloaded :(" && exit
@@ -62,9 +69,17 @@ while IFS= read -r line; do
     # download ghost file
     job_file="$temp_dir/$line"
     wget \
-        --retry-connrefused --waitretry=1 --read-timeout=20 \
-        --timeout=15 ${retries_limit:+--tries=$retries_limit} -O "$job_file" \
-        ${http_user:+--http-user=$http_user} ${http_pw:+--http-password=$http_pw} "$server_dir/jobs/$line" -q
+        --retry-connrefused \
+        --waitretry=1 \
+        --read-timeout=20 \
+        --timeout=15 \
+        ${retries_limit:+--tries=$retries_limit} \
+        ${http_user:+--http-user=$http_user} \
+        ${http_pw:+--http-password=$http_pw} \
+        ${wget_verbose:+--quiet} \
+        -O "$job_file" \
+        "$server_dir/jobs/$line"
+
     # ...and check if it's there...
     [ ! -f "$job_file" ] && echo "    --> Job file '$job_file' could not be downloaded :(" && continue
     # load ghost file data
@@ -81,9 +96,14 @@ while IFS= read -r line; do
     else
 	    echo "    --> Downloading: \"$dl_name\" (from: ${dl_url:0:24}...)"
         wget \
-            --retry-connrefused --waitretry=1 --read-timeout=20 \
-            --timeout=15 ${retries_limit:+--tries=$retries_limit} -O "$dl_targetfile" \
-            "$dl_url" -q
+            --retry-connrefused \
+            --waitretry=1 \
+            --read-timeout=20 \
+            --timeout=15 \
+            ${retries_limit:+--tries=$retries_limit} \
+            ${wget_verbose:+--quiet} \
+            -O "$dl_targetfile" \
+            "$dl_url" \
     fi
 done < "$list_file"
 
