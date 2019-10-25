@@ -71,10 +71,11 @@ f_download "$list_file" "$server_jobs_list" "auth"
 # ...and check if it's there...
 [ ! -f "$list_file" ] && echo "[ERROR] Jobs list could not be downloaded :(" && exit
 
-# process downloads list
+### process downloads list
 jobs_count=$(wc -l < "$list_file") # total number of jobs
 jobs_current=0 # jobs counter
 echo "Running download jobs ($jobs_count) ..."
+
 while IFS= read -r line; do
     jobs_current=$(($jobs_current + 1)) # increment jobs counter
     [ ${#line} -gt 5 ] || continue # skip line if it's too short
@@ -94,6 +95,10 @@ while IFS= read -r line; do
     # dl_url=    <-- sourced from ghost file
     dl_targetfile="$target_dir/$dl_name"
 
+    # temp-save name of current file to lock file
+    # (to have a simple list of job filenames for deleting old files later)
+    echo "$dl_name" >> "$lock_file"
+
     if [ -f "$dl_targetfile" ]
     then
 	    echo -e "  $jobs_current / $jobs_count\t [Skip]     \"$dl_name\" (already exists!)"
@@ -103,6 +108,15 @@ while IFS= read -r line; do
         f_download "$dl_targetfile" "$dl_url"
     fi
 done < "$list_file"
+
+# delete local downloaded files that are NOT present in jobs list
+for old_file_path in "$target_dir"/*; do
+    old_file_name="${old_file_path##*/}"
+    if ! grep -F -q "$old_file_name" "$lock_file"; then
+        echo -e "Deleting old file: $old_file_name"
+	    rm -f "$old_file_path"
+    fi
+done
 
 # delete temp files
 rm -f -r "$temp_dir"
