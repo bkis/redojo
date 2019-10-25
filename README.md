@@ -64,7 +64,7 @@ Maybe there are people having a similar problem to solve, maybe there's even a d
 ## Security
 It may be a good idea to secure the server path exposing the web frontent (the `php` stuff) with a password. Otherwise, everyone (*who knows those files are there*) could see your planned downloads or even add new ones - of course you don't want that.  
   
-You can just use basic HTTP Auth (easy to set up in both **Apache** and **Nginx**) and add your user credentials to the "client" scripts config (`redojo.config`). The script will use these credentials to fetch the list of download jobs from your server (but not for the actual downloads, of course).
+You can just use basic HTTP Auth (easy to set up in both **Apache** and **Nginx**) and add the credentials to the "client" scripts config (`redojo.config`). The script will use them to fetch the list of download jobs from your server (but not for the actual downloads, of course).
 
 
 ## Troubleshooting
